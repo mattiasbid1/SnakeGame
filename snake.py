@@ -33,6 +33,12 @@ class Snake:
             self.snake_parts[seg].goto(new_x, new_y)
         self.snake_parts[0].forward(20)
 
+    def restart(self):
+        for part in self.snake_parts:
+            part.reset()
+        self.snake_parts.clear()
+        self.grow_snake(3, "yes")
+
     def is_alive(self):
         for part in self.snake_parts[1:]:
             if self.head.distance(part) < 10:

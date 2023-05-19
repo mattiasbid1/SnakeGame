@@ -21,6 +21,7 @@ screen.onkey(snake.down, "Down")
 screen.onkey(snake.left, "Left")
 screen.onkey(snake.right, "Right")
 
+
 while True:
     time.sleep(snooze)
     screen.update()
@@ -32,10 +33,10 @@ while True:
         score.add_score()
         snooze *= 0.95
 
-    if snake.is_alive():
-        continue
-    else:
-        score.game_over()
-        break
+    if not snake.is_alive():
+        score.restart()
+        snake.restart()
+        snooze = 0.1
+        food.respawn()
 
 screen.exitonclick()
